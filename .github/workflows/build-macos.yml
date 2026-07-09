@@ -1,1 +1,29 @@
+name: Build macOS Intel
 
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: macos-13
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install Rust
+        uses: dtolnay/rust-toolchain@stable
+
+      - name: Build
+        run: cargo build --release --package playit-cli --package playitd
+
+      - name: Upload playit-cli
+        uses: actions/upload-artifact@v4
+        with:
+          name: playit-cli-macos
+          path: target/release/playit-cli
+
+      - name: Upload playitd
+        uses: actions/upload-artifact@v4
+        with:
+          name: playitd-macos
+          path: target/release/playitd
