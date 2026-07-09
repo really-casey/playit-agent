@@ -22,10 +22,10 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: playit-cli-macos
-          path: target/release/playit-cli
+          path: target/x86_64-apple-darwin/release/playit-cli
 
       - name: Upload playitd
         uses: actions/upload-artifact@v4
         with:
           name: playitd-macos
-          path: target/release/playitd
+          path: target/x86_64-apple-darwin/release/playitd
